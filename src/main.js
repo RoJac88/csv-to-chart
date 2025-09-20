@@ -4,6 +4,14 @@ import { Chart } from 'chart.js/auto';
 
 let chart = null;
 
+function fmtTime(item) {
+  const date = new Date(item.timestamp * 1000);
+  const h = date.getHours().toString().padStart(2, '0');
+  const m = date.getMinutes().toString().padStart(2, '0');
+  const s = date.getSeconds().toString().padStart(2, '0');
+  return `${h}:${m}:${s}`
+}
+
 function onData(results) {
   const { data, errors } = results;
   if (errors.length) {
@@ -16,8 +24,9 @@ function onData(results) {
     chart = new Chart(el, {
       type: 'line',
       data: {
-        labels: data.map((item) => item.timestamp),
+        labels: data.map(fmtTime),
         datasets: [{
+          label: 'Memory usage in KB',
           data: data.map((item) => item.usage),
         }]
       }
