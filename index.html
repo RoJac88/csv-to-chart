@@ -14,6 +14,16 @@
     <div>Select CSV file</div>
     <input type="file" id="csv-input" />
   </label>
+  <div id="radio">
+    <label>
+      <span>Split by PID</span>
+      <input name="group" type="radio" value="split" checked />
+    </label>
+    <label>
+      <span>Aggregate</span>
+      <input name="group" value="agg" type="radio" />
+    </label>
+  </div>
   <canvas id="chart"></canvas>
 </body>
 

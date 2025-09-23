@@ -1,7 +1,13 @@
 body {
   margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: hsl(0, 0%, 12%);
-  color: whitesmoke;
+  min-width: min-height: 100vh;
+  background-color: color: whitesmoke;
+}
+
+#radio {
+  display: none;
+}}
+
+#radio {
+  display: none;
 }
