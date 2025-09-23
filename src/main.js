@@ -33,7 +33,7 @@ function onData(results) {
     })
   } else {
     chart.data = {
-      labels: data.map((item) => item.timestamp),
+      labels: data.map(fmtTime),
       datasets: [{
         label: 'Memory usage in KB',
         data: data.map((item) => item.usage),
