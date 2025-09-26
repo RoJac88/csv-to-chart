@@ -3,6 +3,7 @@ import { parse } from 'papaparse';
 import { Chart } from 'chart.js/auto'; 
 
 const radio = document.getElementById('radio');
+const speedEl = document.querySelector('.speed');
 let chart = null;
 let rawData = null;
 
@@ -96,6 +97,7 @@ function handleFileChange(event) {
   const { files } = event.target;
   const csv = files[0];
   if (!csv) return;
+  speedEl.textContent = '';
   parse(csv, {
     header: true,
     skipEmptyLines: true,
@@ -121,6 +123,17 @@ for (const input of radios) {
       datasets,
     }
     chart.update();
+    if (aggregate) {
+      const { data } = datasets[0]
+      const first = data[0];
+      const last = data[data.length - 1]; 
+      const ramDelta = last - first;
+      const timeDelta = labels[labels.length - 1] - labels[0];
+      const minutesDelta = timeDelta / 60;
+      const speed = (ramDelta / minutesDelta).toFixed(2);
+      speedEl.textContent = `${speed} KB/min`;
+      console.log(`RAM variation is of ${speed} KB/min`);
+    }
   })
 }
 

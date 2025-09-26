@@ -11,3 +11,11 @@ body {
 #radio {
   display: none;
 }
+
+.speed {
+  border: 1px dotted silver;
+  margin: 4px;
+  padding: 6px 0;
+  font-weight: bold;
+  width: fit-content;
+}
